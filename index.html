@@ -94,7 +94,21 @@ textarea{min-height:84px;resize:vertical}input:focus,textarea:focus,[contentedit
 .dlg .row{justify-content:flex-end}.dlg .btn.o{color:#1f2430;background:#fff}
 .vote{display:inline-grid;place-items:center;width:44px;height:44px;border:1.5px solid var(--blue);border-radius:12px;color:var(--blue);font-weight:700}
 .ok2{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#dff7ec;color:var(--green);font-size:26px;margin-bottom:10px}
-.tl .stp{background:var(--card);border:1px solid var(--line)}#vw{white-space:pre-line}[hidden]{display:none!important}
+.tl .stp{background:var(--card);border:1px solid var(--line)}.two2{display:grid;grid-template-columns:1fr 1fr;gap:12px}select{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;background:var(--card);color:var(--ink)}
+.ih{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap}.ih h1{font-size:30px;line-height:1.15;margin:0;max-width:720px}.num{color:var(--mut)}
+.imp{border:0;background:var(--blue);color:#fff;border-radius:99px;padding:12px 22px;font:700 16px Inter,sans-serif;cursor:pointer}.imp b{background:#ffffff33;border-radius:99px;padding:1px 10px;margin-left:6px}
+.ig{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;margin-top:20px}@media(max-width:820px){.ig{grid-template-columns:1fr}}
+.ml,.sd{display:flex;flex-direction:column;gap:16px}.cl{font:700 12px Inter;letter-spacing:.12em;color:var(--mut);margin-bottom:8px}
+.idesc p{margin:0 0 10px}.idesc h4{margin:16px 0 6px;font-size:15px}.idesc ol{margin:0;padding-left:22px}.idesc li{margin:3px 0}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:5px 0;color:var(--mut)}.kv span+span,.kv a{color:var(--ink);text-align:right}
+.pill{display:inline-block;background:var(--soft);color:var(--blue);border-radius:10px;padding:5px 12px;font-weight:600}
+.pr{display:flex}.ps{flex:1;text-align:center;position:relative;padding:10px 4px;border-radius:14px;font-size:12px}.ps i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;margin:0 auto 6px;background:var(--bg);border:1px dashed var(--line);font-style:normal}
+.ps b{display:block;font-weight:600}.ps small{display:block;color:var(--mut);font-family:ui-monospace,Menlo,monospace;font-size:11px}
+.ps:not(:last-child):after{content:'';position:absolute;top:27px;left:calc(50% + 24px);right:calc(-50% + 24px);height:3px;background:var(--line)}
+.ps.on{background:var(--soft);color:var(--blue)}.ps.on i{background:var(--blue);color:#fff;border-color:var(--blue)}
+.ban{display:flex;gap:14px;background:var(--soft);border:2px solid #a9c1fb;border-radius:18px;padding:16px 18px}.bi{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;font-size:20px}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}.cm{padding:10px 0;border-top:1px solid var(--line);margin-top:10px}
+[hidden]{display:none!important}[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style></head><body>
 <header class="site-navbar zn" aria-label="Ziki main navigation">
@@ -146,15 +160,27 @@ textarea{min-height:84px;resize:vertical}input:focus,textarea:focus,[contentedit
 <div id="exp" hidden><textarea id="ex" placeholder="Tell Ziki what you meant"></textarea><div class="row"><button class="btn" id="sendx">Send</button></div></div>
 <div class="row" id="gen" hidden><button class="btn" id="mk">Generate idea</button></div></div></section>
 
-<section data-s="7" hidden><h1>Review your idea</h1><p class="sub" id="gtxt">Ziki is writing this up…</p><div class="card" id="idea" hidden>
-<label for="i1">Idea title</label><input type="text" id="i1"><label for="i2">Website</label><input type="text" id="i2"><label for="i3">Current experience</label><textarea id="i3"></textarea><label id="l6" for="i6">Steps to reproduce</label><textarea id="i6" style="min-height:130px"></textarea><label for="i4">Proposed improvement</label><textarea id="i4"></textarea><label for="i5">Expected benefit to users</label><textarea id="i5"></textarea>
+<section data-s="7" hidden><h1>Review your issue</h1><p class="sub" id="gtxt">Ziki is writing this up…</p><div class="card" id="idea" hidden>
+<label for="i1">Title</label><input type="text" id="i1"><div class="two2"><div><label for="ip">Platform</label><select id="ip"><option>Web</option><option>Desktop</option><option>Mobile</option></select></div><div><label for="i2">Website or app</label><input type="text" id="i2"></div></div>
+<label for="i3">Description</label><textarea id="i3"></textarea>
+<label id="l6" for="i6">Steps to Reproduce</label><textarea id="i6" style="min-height:120px"></textarea>
+<div id="beh"><label for="ie">Expected Behavior</label><textarea id="ie"></textarea><label for="ia">Actual Behavior</label><textarea id="ia"></textarea></div>
+<div id="imp5" hidden><label for="i4">Proposed Improvement</label><textarea id="i4"></textarea><label for="i5">Expected Benefit</label><textarea id="i5"></textarea></div>
+<label for="ien">Environment</label><textarea id="ien"></textarea>
 <label id="evl">Walkthrough evidence</label><div class="ev" id="evd"><span id="evt"></span><button class="btn g" id="del2">Delete recording</button></div>
-<label style="display:flex;gap:8px;align-items:center;font-weight:500;margin-top:16px"><input type="checkbox" id="cf"> I’ve reviewed this idea and I’m happy for it to be submitted.</label>
+<label style="display:flex;gap:8px;align-items:center;font-weight:500;margin-top:16px"><input type="checkbox" id="cf"> I’ve reviewed this and I’m happy for it to be submitted.</label>
 <div class="row"><button class="btn" id="sub" disabled>Submit Idea</button><button class="btn g" data-go="6">Back</button></div></div></section>
 
-<section data-s="8" hidden><div class="card"><div class="ok2">✓</div><h1 style="margin-top:0">Idea submitted</h1><p class="sub" id="dn">Thanks, the team can now see it.</p>
-<div class="stp" style="grid-template-columns:auto 1fr auto"><span class="vote" id="vt">1</span><div><b id="d1"></b><br><small id="d2"></small></div><span class="flag" style="background:#e6f7ee;color:var(--green)">Idea</span></div>
-<div class="row"><button class="btn" id="view">View idea</button><button class="btn o" id="again">Submit another idea</button></div><div id="vw" class="note" style="margin-top:14px" hidden></div></div></section>
+<section data-s="8" hidden><div class="ih"><h1><span class="num">#412</span> <span id="it"></span></h1><button class="imp" id="impb">⌃ Important <b id="ivn">1</b></button></div>
+<div class="ig"><div class="ml"><div class="card"><div class="cl">DESCRIPTION</div><div class="idesc" id="idesc"></div></div>
+<div class="card"><div class="cl">PROGRESS REPORT</div><div class="pr" id="pr"></div></div>
+<div class="ban"><span class="bi">→</span><div><b>Idea: waiting for confirmation</b><br>Nobody has confirmed this idea yet.<br><b>Everyone:</b> if you’ve seen this problem or want this improvement, please confirm it. Confirmed ideas become open issues that agents can bid on.</div></div>
+<div class="card"><div class="cl">COMMENTS <span id="cn">0</span></div><div class="row" style="align-items:flex-start;margin-top:10px"><textarea id="ct" placeholder="Add a comment" style="flex:1"></textarea><button class="btn o" id="cb">Comment</button></div><div id="cl2"></div></div></div>
+<div class="sd"><div class="card"><div class="cl">STATUS</div><span class="pill">● Idea · Awaiting confirmation</span></div>
+<div class="card"><div class="cl">PEOPLE</div><div class="kv"><span>Reporter</span><span><img id="rep" alt="" width="26" height="26" style="border-radius:50%;vertical-align:middle"> Pauline Banye</span></div><div class="kv"><span>Assignee</span><span style="color:var(--mut)">Unassigned</span></div></div>
+<div class="card"><div class="cl">LINKS</div><div class="kv"><span>GitHub PR</span><span style="color:var(--mut)">None yet</span></div><div class="kv"><span>Idea</span><a href="#" style="color:var(--blue);text-decoration:none" onclick="return false">Idea #412</a></div></div>
+<div class="card"><div class="cl">ACTIVITY (1)</div><div class="kv"><span><b>Pauline Banye</b> submitted this idea</span><span style="color:var(--mut)">just now</span></div></div></div></div>
+<div class="row"><button class="btn o" id="again">Submit another idea</button></div></section>
 </main>
 
 <div class="ov" id="dlg" hidden><div class="dlg" role="dialog" aria-label="Choose what to share"><h3>Choose a tab to share</h3><div style="color:#667085;font-size:13px">Ziki wants to see the content of a browser tab.</div>
@@ -224,6 +250,14 @@ $('an').onclick=()=>{note=$('why').value.trim();show(5);$('tl').innerHTML='';$('
 function drawTL(){$('tl').innerHTML=steps.map((s,i)=>`<div class="stp"><div class="thumb">${s.h}</div><div><small>Step ${i+1} · 0:0${s.t}${s.flag?'<span class="flag">Please check this one</span>':''}</small><span contenteditable data-i="${i}" role="textbox" aria-label="Step ${i+1} description">${s.d}</span></div><button class="btn g" data-r="${i}">Remove</button></div>`).join('');
  Q('[contenteditable]').forEach(e=>e.oninput=()=>steps[e.dataset.i].d=e.textContent);Q('[data-r]').forEach(b=>b.onclick=()=>{steps.splice(+b.dataset.r,1);drawTL()})}
 $('ok5').onclick=()=>{show(6);resetChat()};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function parseFlow(s){const L=s.split('\n'),g=k=>(L.find(x=>x.startsWith(k))||'').replace(k,'').trim();return{steps:L.filter(x=>/^\d+\./.test(x)).join('\n'),exp:g('Expected:'),act:g('Actual:')}}
+function fill(){let imp=false,title,desc,flow,prop='',ben='',plat='Web',app=site;
+ if(mode=='video'){title='Price filter doesn’t update the product list';desc='On Kola Market, choosing the Phones category and applying the “Under ₦100,000” price filter does not update the product list. All 6 phones are still shown, including ones above ₦100,000.'+(note?' '+note:'');flow=videoSteps();app=url}
+ else{const d=draft(full()),w=(src.match(/\b(?:would like|wish|want|need|could we|should be able)\s+(?:to\s+)?([^.!?]+)/i)||[])[1];imp=d.imp;title=imp&&w?cap(w.replace(/\bmy\b/gi,'the')):draft(src).title;desc=src+(note?' '+note:'');flow=flowFor(src,imp,site||'the page or screen where this happens');prop=d.prop;ben=d.ben;
+  plat=/\b(phone|android|ios|iphone|mobile|tap)\b/i.test(full())?'Mobile':/\b(desktop|windows|mac(os)?)\b/i.test(full())?'Desktop':'Web'}
+ const f=parseFlow(flow);$('i1').value=(imp?'Improvement: ':'Bug: ')+title;$('ip').value=plat;$('i2').value=app;$('i3').value=desc;$('l6').textContent=imp?'User Flow':'Steps to Reproduce';$('i6').value=f.steps;$('ie').value=f.exp;$('ia').value=f.act;$('i4').value=prop;$('i5').value=ben;
+ $('ien').value='1. Application: '+(app||'Not specified')+'\n2. Platform: '+plat;$('beh').hidden=imp;$('imp5').hidden=!imp}
 function resetChat(){Q('.me,.re').forEach(x=>x.remove());$('ch').hidden=false;$('exp').hidden=true;$('gen').hidden=true;$('ex').value='';
  if(mode=='video'){$('q1').textContent='I noticed the product list didn’t appear to change after you applied the filter. Is that the problem you’re reporting?';return}
  const d=draft(full());$('q1').textContent='Thanks, I’ve read your description. Here’s what I understood:';
@@ -235,19 +269,22 @@ $('no').onclick=()=>{$('ch').hidden=true;say('Not exactly, let me explain.',1);$
 $('sendx').onclick=()=>{const v=$('ex').value.trim();if(!v)return;note=(note?note+' ':'')+v;$('exp').hidden=true;say(v,1);setTimeout(()=>{say(mode=='text'?'Thanks, I’ve added that detail: “'+v.replace(/[.!?]+$/,'')+'”. Shall I draft it?':'Thanks. I’ll update my understanding with that.');$('gen').hidden=false},500)};
 // generate, review and submit
 $('mk').onclick=()=>{show(7);$('idea').hidden=true;$('gtxt').textContent='Ziki is writing this up…';
- setTimeout(()=>{$('gtxt').textContent='Edit anything you like. Nothing is submitted until you confirm.';$('i1').value='Price filter doesn’t update the product list';$('i2').value=url;
-  $('i3').value='After choosing the Phones category and applying the “Under ₦100,000” price filter, the list still shows all 6 phones, including ones above ₦100,000.'+(note?' User note: '+note:'');
-  $('i4').value='Update the results as soon as a price filter is applied, show how many products match, and explain when nothing matches.';
-  $('i5').value='Shoppers can narrow products by budget quickly, with fewer abandoned visits and fewer support questions.';
-  $('l6').textContent='Steps to reproduce';$('i6').value=videoSteps();
-  if(mode=='text'){const d=draft(full());$('l6').textContent=d.imp?'User flow':'Steps to reproduce';$('i6').value=flowFor(src,d.imp,site||'the page or screen where this happens')+(note?'\nNote: '+note:'');$('i1').value=draft(src).title;$('i2').value=site;$('i3').value=src+(note?' Clarification: '+note:'');$('i4').value=d.prop;$('i5').value=d.ben}
-  $('cf').checked=false;$('sub').disabled=true;evid();$('idea').hidden=false},1400)};
+ setTimeout(()=>{$('gtxt').textContent='Edit anything you like. Nothing is submitted until you confirm.';fill();$('cf').checked=false;$('sub').disabled=true;evid();$('idea').hidden=false},1400)};
 function evid(){const tx=mode=='text';$('evl').hidden=tx;$('evd').hidden=tx;if(tx)return;$('evt').textContent=recDeleted?'Recording deleted. Only the text above will be submitted.':steps.length+' steps · '+steps.length+' screenshots · '+fmt(t)+' walkthrough';$('del2').hidden=recDeleted}
 $('del2').onclick=()=>{recDeleted=true;evid()};
 $('cf').onchange=()=>$('sub').disabled=!$('cf').checked;
-$('sub').onclick=()=>{idea={title:$('i1').value,url:$('i2').value,cur:$('i3').value,prop:$('i4').value,flow:$('i6').value,fl:$('l6').textContent};done()};
-function done(){$('d1').textContent=idea.title;$('d2').textContent='#412 · '+(idea.url&&idea.url!='—'?idea.url+' · ':'')+'just now';$('vw').hidden=true;show(8)}
-$('view').onclick=()=>{$('vw').hidden=false;$('vw').innerHTML='<b>'+idea.title.replace(/</g,'&lt;')+'</b><br>'+(idea.cur?idea.cur.replace(/</g,'&lt;'):'Submitted by Pauline Banye.')+(idea.flow?'<br><br><b>'+idea.fl+'</b><br>'+idea.flow.replace(/</g,'&lt;'):'')+'<br><small>'+(mode=='text'?'Written description only.':recDeleted?'No walkthrough attached.':'Walkthrough evidence attached.')+'</small>'};
+$('sub').onclick=()=>{idea={title:$('i1').value,desc:$('i3').value,lbl:$('l6').textContent,steps:$('i6').value,exp:$('ie').value,act:$('ia').value,imp:!$('imp5').hidden,prop:$('i4').value,ben:$('i5').value,env:$('ien').value};done()};
+function done(){const ol=t=>'<ol>'+t.split('\n').filter(Boolean).map(l=>'<li>'+esc(l.replace(/^\d+\.\s*/,''))+'</li>').join('')+'</ol>',pr=t=>'<p><i>'+esc(t)+'</i></p>';
+ $('it').textContent=idea.title;$('rep').src=document.querySelector('.zn-prof img')?.src||'';
+ let d='<p><b>Name: Pauline Banye</b><br><b>Team: Zedu</b><br><b>Description:</b></p>'+pr(idea.desc)+'<h4>'+idea.lbl+'</h4>'+ol(idea.steps);
+ d+=idea.imp?'<h4>Proposed Improvement</h4>'+pr(idea.prop)+'<h4>Expected Benefit</h4>'+pr(idea.ben):'<h4>Expected Behavior</h4>'+pr(idea.exp)+'<h4>Actual Behavior</h4>'+pr(idea.act);
+ d+='<h4>Environment</h4>'+ol(idea.env);
+ if(mode=='video'&&!recDeleted&&steps.length)d+='<h4>Walkthrough evidence</h4><div class="thumbs">'+steps.map(s=>'<div class="thumb">'+s.h+'</div>').join('')+'</div>';
+ $('idesc').innerHTML=d;
+ $('pr').innerHTML=[['Idea','0 verdicts'],['Requires confirmation','0 confirmations'],['Open',''],['In progress',''],['Requires review',''],['Accepted','']].map((s,i)=>`<div class="ps${i?'':' on'}"><i>${i?'○':'💡'}</i><b>${s[0]}</b><small>${s[1]}</small></div>`).join('');
+ $('cl2').innerHTML='';$('cn').textContent='0';$('ivn').textContent='1';show(8)}
+$('impb').onclick=()=>{$('ivn').textContent=$('ivn').textContent=='1'?'0':'1'};
+$('cb').onclick=()=>{const v=$('ct').value.trim();if(!v)return;const d=document.createElement('div');d.className='cm';d.innerHTML='<b>Pauline Banye</b> · just now<br>';d.appendChild(document.createTextNode(v));$('cl2').prepend(d);$('cn').textContent=$('cl2').children.length;$('ct').value=''};
 $('again').onclick=()=>{Q('input[type=text],textarea').forEach(x=>x.value='');src='';note='';site='';$('wsub').disabled=true;show(0)};
 Q('.zn-link')[0]?.classList.add('active');
 show(0);
